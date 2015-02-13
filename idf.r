@@ -4,15 +4,18 @@
 library(foreign)
 library(dplyr)
 
-pessoas <- read.spss("C:\\Users\\rafael.magalhaes\\Google Drive\\Documentos\\Synergia\\Votorantim\\pesssoas3.sav",
-                     trim.factor.names=T,
-                     to.data.frame=T,
-                     use.missings=T)
+# pessoas <- read.spss("pesssoas3.sav",
+#                      trim.factor.names=T,
+#                      to.data.frame=T,
+#                      use.missings=T)
+# 
+# propriedades <- read.spss("propriedades5.sav",
+#                           trim.factor.names=T,
+#                           to.data.frame=T,
+#                           use.missings=T)
+# save.image("idf.RData")
 
-propriedades <- read.spss("C:\\Users\\rafael.magalhaes\\Google Drive\\Documentos\\Synergia\\Votorantim\\propriedades5.sav",
-                          trim.factor.names=T,
-                          to.data.frame=T,
-                          use.missings=T)
+load("idf.RData")
 
 
 ## Organização e limpeza do banco ----
@@ -23,6 +26,7 @@ attr(pessoas$X.3.2.28, "value.labels") <- attr(pessoas$X.3.2.29, "value.labels")
 attr(pessoas$X.3.2.30, "value.labels") <- attr(pessoas$X.3.2.31, "value.labels") <- 
 attr(pessoas$X.3.2.32, "value.labels") <- attr(pessoas$X.3.2.33, "value.labels") <- 
 attr(pessoas$X.3.2.34, "value.labels") <- attr(pessoas$X.3.2.35, "value.labels") <- NULL
+
 
 ## Cálculo das variáveis de apoio ----
 # p = número de pessoas por domicílio
@@ -315,5 +319,6 @@ master$IDF <- rowMeans(cbind(master$vulnerabilidade,
            habitacao = mean(habitacao, na.rm=T),
            recursos = mean(recursos, na.rm=T),
            IDF = mean(IDF, na.rm=T)))
-
-# write.csv(idf.medio, file = "C:\\Users\\rafael.magalhaes\\Google Drive\\Documentos\\Synergia\\Votorantim\\idf.csv")
+           
+# write.csv(idf.medio, file = "idf.csv")
+          
