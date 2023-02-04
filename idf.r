@@ -1,4 +1,4 @@
-## SCRIPT PARA CÁLCULO DO IDF
+## SCRIPT PARA CALCULO DO IDF
 
 # install.packages(c("foreign", "dplyr"))
 library(foreign)
